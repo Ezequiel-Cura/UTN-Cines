@@ -1,13 +1,13 @@
 
 
 // seedDatabase.js
-const database = require('../database');
+const {getConnection} = require('../database');
 const data = require('./datos.json'); // Archivo JSON con los datos
 
 const seedDatabase = async () => {
   let connection;
   try {
-    connection = await database.getConnection();
+    connection = await getConnection();
 
     // Insertar géneros
     for (const genero of data.generos) {
@@ -83,7 +83,7 @@ const seedDatabase = async () => {
 const createTables = async () => {
   let connection;
   try {
-    connection = await database.getConnection();
+    connection = await getConnection();
 
     await connection.query(`
       CREATE TABLE Pelicula (
